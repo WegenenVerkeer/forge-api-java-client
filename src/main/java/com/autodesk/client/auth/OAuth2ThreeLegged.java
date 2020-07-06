@@ -320,20 +320,6 @@ public class OAuth2ThreeLegged implements Authentication {
                 this.credentials = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
                 response = this.credentials;
 
-                // refresh access token 3 minutes (3*60 seconds) in advance.
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        // get token again
-                        try {
-                            refreshAccessToken(refresh_token);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, (expires_in - 3 * 60) * 1000);
-
             } catch (ParseException e) {
                 throw new RuntimeException("Unable to parse json " + responseBody);
             }

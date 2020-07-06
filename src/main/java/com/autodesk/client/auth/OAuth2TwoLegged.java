@@ -235,20 +235,6 @@ public class OAuth2TwoLegged implements Authentication {
                     this.credentials = new Credentials(access_token, expiresAt);
                     response = this.credentials;
 
-                    // refresh token 3 minutes (3*60 seconds) in advance.
-                    Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            // get token again
-                            try {
-                                authenticate();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, (expires_in - 3 * 60) * 1000);
-
                 } catch (ParseException e) {
                     throw new RuntimeException("Unable to parse json " + body);
                 }
