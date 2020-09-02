@@ -92,7 +92,16 @@ public class ManifestChildren   {
 
     OBJ("obj"),
 
-    ORIGINAL_THUMBNAIL("original-thumbnail");
+    ORIGINAL_THUMBNAIL("original-thumbnail"),
+
+    DESIGNDESCRIPTION("Autodesk.CloudPlatform.DesignDescription"),
+    INDEXABLECONTENT("Autodesk.CloudPlatform.IndexableContent"),
+    LEAFLETZIP("leaflet-zip"),
+    PREVIEW("preview"),
+    VIEWABLE("viewable"),
+    RAAS("raas"),
+    PDF("pdf"),
+    LOD("lod");
 
     private String value;
 
