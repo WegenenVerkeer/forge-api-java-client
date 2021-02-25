@@ -27,6 +27,7 @@ package com.autodesk.client.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -125,7 +126,8 @@ public class ManifestChildren   {
   private String name = null;
 
   @JsonProperty("phaseNames")
-  private String phaseNames = null;
+  @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+  private String[] phaseNames = null;
 
   @JsonProperty("viewableID")
   private String viewableID = null;
@@ -282,11 +284,11 @@ public class ManifestChildren   {
    * @return phaseNames
    **/
   @ApiModelProperty(example = "null", value = "Phasename of the derivative child")
-  public String getPhaseNames() {
+  public String[] getPhaseNames() {
     return phaseNames;
   }
 
-  public void setPhaseNames(String phaseNames) {
+  public void setPhaseNames(String[] phaseNames) {
     this.phaseNames = phaseNames;
   }
 
