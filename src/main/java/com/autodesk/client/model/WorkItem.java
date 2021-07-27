@@ -25,42 +25,33 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
  * WorkItem
  */
 
+
+
+
 public class WorkItem   {
-  @JsonProperty("Id")
+  @JsonProperty("id")
   private String id = null;
 
-  @JsonProperty("Arguments")
-  private Object arguments = null;
+  @JsonProperty("arguments")
+  private Map<String, XrefTreeArgument> arguments = new HashMap<String, XrefTreeArgument>();
 
-  @JsonProperty("Status")
+  @JsonProperty("status")
   private String status = null;
 
-  @JsonProperty("StatusDetail")
-  private Object statusDetail = null;
-
-  @JsonProperty("AvailabilityZone")
-  private String availabilityZone = null;
-
-  @JsonProperty("ActivityId")
+  @JsonProperty("activityId")
   private String activityId = null;
-
-  @JsonProperty("Version")
-  private Integer version = null;
-
-  @JsonProperty("Timestamp")
-  private String timestamp = null;
 
   public WorkItem id(String id) {
     this.id = id;
@@ -80,7 +71,7 @@ public class WorkItem   {
     this.id = id;
   }
 
-  public WorkItem arguments(Object arguments) {
+  public WorkItem arguments(Map<String, XrefTreeArgument> arguments) {
     this.arguments = arguments;
     return this;
   }
@@ -90,11 +81,11 @@ public class WorkItem   {
    * @return arguments
   **/
   @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getArguments() {
+  public Map<String, XrefTreeArgument> getArguments() {
     return arguments;
   }
 
-  public void setArguments(Object arguments) {
+  public void setArguments(Map<String, XrefTreeArgument> arguments) {
     this.arguments = arguments;
   }
 
@@ -116,42 +107,6 @@ public class WorkItem   {
     this.status = status;
   }
 
-  public WorkItem statusDetail(Object statusDetail) {
-    this.statusDetail = statusDetail;
-    return this;
-  }
-
-   /**
-   * Get statusDetail
-   * @return statusDetail
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Object getStatusDetail() {
-    return statusDetail;
-  }
-
-  public void setStatusDetail(Object statusDetail) {
-    this.statusDetail = statusDetail;
-  }
-
-  public WorkItem availabilityZone(String availabilityZone) {
-    this.availabilityZone = availabilityZone;
-    return this;
-  }
-
-   /**
-   * Get availabilityZone
-   * @return availabilityZone
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getAvailabilityZone() {
-    return availabilityZone;
-  }
-
-  public void setAvailabilityZone(String availabilityZone) {
-    this.availabilityZone = availabilityZone;
-  }
-
   public WorkItem activityId(String activityId) {
     this.activityId = activityId;
     return this;
@@ -170,43 +125,6 @@ public class WorkItem   {
     this.activityId = activityId;
   }
 
-  public WorkItem version(Integer version) {
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Integer getVersion() {
-    return version;
-  }
-
-  public void setVersion(Integer version) {
-    this.version = version;
-  }
-
-  public WorkItem timestamp(String timestamp) {
-    this.timestamp = timestamp;
-    return this;
-  }
-
-   /**
-   * Get timestamp
-   * @return timestamp
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimestamp() {
-    return timestamp;
-  }
-
-  public void setTimestamp(String timestamp) {
-    this.timestamp = timestamp;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -219,31 +137,22 @@ public class WorkItem   {
     return Objects.equals(this.id, workItem.id) &&
         Objects.equals(this.arguments, workItem.arguments) &&
         Objects.equals(this.status, workItem.status) &&
-        Objects.equals(this.statusDetail, workItem.statusDetail) &&
-        Objects.equals(this.availabilityZone, workItem.availabilityZone) &&
-        Objects.equals(this.activityId, workItem.activityId) &&
-        Objects.equals(this.version, workItem.version) &&
-        Objects.equals(this.timestamp, workItem.timestamp);
+        Objects.equals(this.activityId, workItem.activityId) ;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, arguments, status, statusDetail, availabilityZone, activityId, version, timestamp);
+    return Objects.hash(id, arguments, status,activityId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WorkItem {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    statusDetail: ").append(toIndentedString(statusDetail)).append("\n");
-    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("    activityId: ").append(toIndentedString(activityId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

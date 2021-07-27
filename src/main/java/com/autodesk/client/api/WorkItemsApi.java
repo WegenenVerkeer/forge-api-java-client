@@ -85,7 +85,7 @@ public class WorkItemsApi {
     }
     
     // create path and map variables
-    String localVarPath = "/autocad.io/us-east/v2/WorkItems".replaceAll("\\{format\\}","json");
+    String localVarPath = "/da/us-east/v3/workitems".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -108,82 +108,7 @@ public class WorkItemsApi {
     GenericType<WorkItemResp> localVarReturnType = new GenericType<WorkItemResp>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
-  /**
-   * Removes a specific WorkItem.
-   * 
-   * @param id  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> deleteWorkItem(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'id' is set
-    if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling deleteWorkItem");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/vnd.api+json", "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-
-    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
-  /**
-   * Returns the details of all WorkItems.
-   * 
-   * @param skip  (optional)
-   * @return DesignAutomationWorkItems
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<DesignAutomationWorkItems> getAllWorkItems(Integer skip,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
-
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/autocad.io/us-east/v2/WorkItems".replaceAll("\\{format\\}","json");
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "$skip", skip));
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/vnd.api+json", "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    GenericType<DesignAutomationWorkItems> localVarReturnType = new GenericType<DesignAutomationWorkItems>() {};
-    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
-      }
   /**
    * Returns the details of a specific WorkItem.
    * 
@@ -201,16 +126,14 @@ public class WorkItemsApi {
     }
     
     // create path and map variables
-    String localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+    String localVarPath = "/da/us-east/v3/workitems/{id}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-
-    
     
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"

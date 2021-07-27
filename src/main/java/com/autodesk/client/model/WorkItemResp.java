@@ -28,8 +28,6 @@ package com.autodesk.client.model;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
@@ -38,50 +36,16 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class WorkItemResp   {
-  @JsonProperty("Id")
+  @JsonProperty("id")
   private String id = null;
 
-  @JsonProperty("Arguments")
-  private Object arguments = null;
-
-  @JsonProperty("Status")
+  // pending, inprogress, cancelled, failedLimitProcessingTime,
+  // failedDownload, failedInstructions, failedUpload, failedUploadOptional, success
+  @JsonProperty("status")
   private String status = null;
 
-  @JsonProperty("StatusDetail")
-  private Object statusDetail = null;
-
-  @JsonProperty("AvailabilityZone")
-  private String availabilityZone = null;
-
-  @JsonProperty("ActivityId")
-  private String activityId = null;
-
-  @JsonProperty("Version")
-  private Integer version = null;
-
-  @JsonProperty("Timestamp")
-  private String timestamp = null;
-
-  @JsonProperty("TimeQueued")
-  private String timeQueued = null;
-
-  @JsonProperty("TimeInputTransferStarted")
-  private String timeInputTransferStarted = null;
-
-  @JsonProperty("TimeScriptStarted")
-  private String timeScriptStarted = null;
-
-  @JsonProperty("TimeScriptEnded")
-  private String timeScriptEnded = null;
-
-  @JsonProperty("TimeOutputTransferEnded")
-  private String timeOutputTransferEnded = null;
-
-  @JsonProperty("BytesTranferredIn")
-  private Integer bytesTranferredIn = null;
-
-  @JsonProperty("BytesTranferredOut")
-  private Integer bytesTranferredOut = null;
+  @JsonProperty("reportUrl")
+  private String reportUrl = null;
 
   public WorkItemResp id(String id) {
     this.id = id;
@@ -101,23 +65,6 @@ public class WorkItemResp   {
     this.id = id;
   }
 
-  public WorkItemResp arguments(Object arguments) {
-    this.arguments = arguments;
-    return this;
-  }
-
-   /**
-   * Get arguments
-   * @return arguments
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Object getArguments() {
-    return arguments;
-  }
-
-  public void setArguments(Object arguments) {
-    this.arguments = arguments;
-  }
 
   public WorkItemResp status(String status) {
     this.status = status;
@@ -137,26 +84,9 @@ public class WorkItemResp   {
     this.status = status;
   }
 
-  public WorkItemResp statusDetail(Object statusDetail) {
-    this.statusDetail = statusDetail;
-    return this;
-  }
 
-   /**
-   * Get statusDetail
-   * @return statusDetail
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Object getStatusDetail() {
-    return statusDetail;
-  }
-
-  public void setStatusDetail(Object statusDetail) {
-    this.statusDetail = statusDetail;
-  }
-
-  public WorkItemResp availabilityZone(String availabilityZone) {
-    this.availabilityZone = availabilityZone;
+  public WorkItemResp reportUrl(String reportUrl) {
+    this.reportUrl = reportUrl;
     return this;
   }
 
@@ -165,192 +95,12 @@ public class WorkItemResp   {
    * @return availabilityZone
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getAvailabilityZone() {
-    return availabilityZone;
+  public String getReportUrl() {
+    return reportUrl;
   }
 
-  public void setAvailabilityZone(String availabilityZone) {
-    this.availabilityZone = availabilityZone;
-  }
-
-  public WorkItemResp activityId(String activityId) {
-    this.activityId = activityId;
-    return this;
-  }
-
-   /**
-   * Get activityId
-   * @return activityId
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getActivityId() {
-    return activityId;
-  }
-
-  public void setActivityId(String activityId) {
-    this.activityId = activityId;
-  }
-
-  public WorkItemResp version(Integer version) {
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Integer getVersion() {
-    return version;
-  }
-
-  public void setVersion(Integer version) {
-    this.version = version;
-  }
-
-  public WorkItemResp timestamp(String timestamp) {
-    this.timestamp = timestamp;
-    return this;
-  }
-
-   /**
-   * Get timestamp
-   * @return timestamp
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimestamp() {
-    return timestamp;
-  }
-
-  public void setTimestamp(String timestamp) {
-    this.timestamp = timestamp;
-  }
-
-  public WorkItemResp timeQueued(String timeQueued) {
-    this.timeQueued = timeQueued;
-    return this;
-  }
-
-   /**
-   * Get timeQueued
-   * @return timeQueued
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimeQueued() {
-    return timeQueued;
-  }
-
-  public void setTimeQueued(String timeQueued) {
-    this.timeQueued = timeQueued;
-  }
-
-  public WorkItemResp timeInputTransferStarted(String timeInputTransferStarted) {
-    this.timeInputTransferStarted = timeInputTransferStarted;
-    return this;
-  }
-
-   /**
-   * Get timeInputTransferStarted
-   * @return timeInputTransferStarted
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimeInputTransferStarted() {
-    return timeInputTransferStarted;
-  }
-
-  public void setTimeInputTransferStarted(String timeInputTransferStarted) {
-    this.timeInputTransferStarted = timeInputTransferStarted;
-  }
-
-  public WorkItemResp timeScriptStarted(String timeScriptStarted) {
-    this.timeScriptStarted = timeScriptStarted;
-    return this;
-  }
-
-   /**
-   * Get timeScriptStarted
-   * @return timeScriptStarted
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimeScriptStarted() {
-    return timeScriptStarted;
-  }
-
-  public void setTimeScriptStarted(String timeScriptStarted) {
-    this.timeScriptStarted = timeScriptStarted;
-  }
-
-  public WorkItemResp timeScriptEnded(String timeScriptEnded) {
-    this.timeScriptEnded = timeScriptEnded;
-    return this;
-  }
-
-   /**
-   * Get timeScriptEnded
-   * @return timeScriptEnded
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimeScriptEnded() {
-    return timeScriptEnded;
-  }
-
-  public void setTimeScriptEnded(String timeScriptEnded) {
-    this.timeScriptEnded = timeScriptEnded;
-  }
-
-  public WorkItemResp timeOutputTransferEnded(String timeOutputTransferEnded) {
-    this.timeOutputTransferEnded = timeOutputTransferEnded;
-    return this;
-  }
-
-   /**
-   * Get timeOutputTransferEnded
-   * @return timeOutputTransferEnded
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getTimeOutputTransferEnded() {
-    return timeOutputTransferEnded;
-  }
-
-  public void setTimeOutputTransferEnded(String timeOutputTransferEnded) {
-    this.timeOutputTransferEnded = timeOutputTransferEnded;
-  }
-
-  public WorkItemResp bytesTranferredIn(Integer bytesTranferredIn) {
-    this.bytesTranferredIn = bytesTranferredIn;
-    return this;
-  }
-
-   /**
-   * Get bytesTranferredIn
-   * @return bytesTranferredIn
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Integer getBytesTranferredIn() {
-    return bytesTranferredIn;
-  }
-
-  public void setBytesTranferredIn(Integer bytesTranferredIn) {
-    this.bytesTranferredIn = bytesTranferredIn;
-  }
-
-  public WorkItemResp bytesTranferredOut(Integer bytesTranferredOut) {
-    this.bytesTranferredOut = bytesTranferredOut;
-    return this;
-  }
-
-   /**
-   * Get bytesTranferredOut
-   * @return bytesTranferredOut
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Integer getBytesTranferredOut() {
-    return bytesTranferredOut;
-  }
-
-  public void setBytesTranferredOut(Integer bytesTranferredOut) {
-    this.bytesTranferredOut = bytesTranferredOut;
+  public void setReportUrl(String reportUrl) {
+    this.reportUrl = reportUrl;
   }
 
 
@@ -364,47 +114,22 @@ public class WorkItemResp   {
     }
     WorkItemResp workItemResp = (WorkItemResp) o;
     return Objects.equals(this.id, workItemResp.id) &&
-        Objects.equals(this.arguments, workItemResp.arguments) &&
         Objects.equals(this.status, workItemResp.status) &&
-        Objects.equals(this.statusDetail, workItemResp.statusDetail) &&
-        Objects.equals(this.availabilityZone, workItemResp.availabilityZone) &&
-        Objects.equals(this.activityId, workItemResp.activityId) &&
-        Objects.equals(this.version, workItemResp.version) &&
-        Objects.equals(this.timestamp, workItemResp.timestamp) &&
-        Objects.equals(this.timeQueued, workItemResp.timeQueued) &&
-        Objects.equals(this.timeInputTransferStarted, workItemResp.timeInputTransferStarted) &&
-        Objects.equals(this.timeScriptStarted, workItemResp.timeScriptStarted) &&
-        Objects.equals(this.timeScriptEnded, workItemResp.timeScriptEnded) &&
-        Objects.equals(this.timeOutputTransferEnded, workItemResp.timeOutputTransferEnded) &&
-        Objects.equals(this.bytesTranferredIn, workItemResp.bytesTranferredIn) &&
-        Objects.equals(this.bytesTranferredOut, workItemResp.bytesTranferredOut);
+        Objects.equals(this.reportUrl, workItemResp.reportUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, arguments, status, statusDetail, availabilityZone, activityId, version, timestamp, timeQueued, timeInputTransferStarted, timeScriptStarted, timeScriptEnded, timeOutputTransferEnded, bytesTranferredIn, bytesTranferredOut);
+    return Objects.hash(id, status, reportUrl);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WorkItemResp {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    statusDetail: ").append(toIndentedString(statusDetail)).append("\n");
-    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
-    sb.append("    activityId: ").append(toIndentedString(activityId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
-    sb.append("    timeQueued: ").append(toIndentedString(timeQueued)).append("\n");
-    sb.append("    timeInputTransferStarted: ").append(toIndentedString(timeInputTransferStarted)).append("\n");
-    sb.append("    timeScriptStarted: ").append(toIndentedString(timeScriptStarted)).append("\n");
-    sb.append("    timeScriptEnded: ").append(toIndentedString(timeScriptEnded)).append("\n");
-    sb.append("    timeOutputTransferEnded: ").append(toIndentedString(timeOutputTransferEnded)).append("\n");
-    sb.append("    bytesTranferredIn: ").append(toIndentedString(bytesTranferredIn)).append("\n");
-    sb.append("    bytesTranferredOut: ").append(toIndentedString(bytesTranferredOut)).append("\n");
+    sb.append("    reportUrl: ").append(toIndentedString(reportUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }
