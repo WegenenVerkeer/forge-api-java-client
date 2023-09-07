@@ -314,23 +314,23 @@ public class ProjectsApi {
 
   /**
    *
-   * Creates a new version of an item in the &#39;data&#39; domain service.
+   * Get top folders list of a specific project.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param hubId the &#x60;hub id&#x60; (required)
-   * @return VersionCreated
+   * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Folder> topFolders(String hubId, String projectId, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<Folders> topFolders(String hubId, String projectId, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
 
     // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling postVersion");
+    if (hubId == null || projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'hubId or projectId' when calling postVersion");
     }
 
     // create path and map variables
-    String localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/hub"
+    String localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/topFolders"
             .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
             .replaceAll("\\{" + "hub_id" + "\\}", apiClient.escapeString(hubId.toString()));;
 
@@ -349,7 +349,23 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
+    GenericType<Folders> localVarReturnType = new GenericType<Folders>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
   }
+  
+  /**
+  *
+  * Get the profile information of an authorizing end user in a three-legged context..
+  * @param none 
+  * @return UserAtMe
+  * @throws ApiException if fails to make API call
+  */
+ public ApiResponse<UserAtMe> getUserAtMe(Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+
+    // create path
+   String localVarPath = "/userprofile/v1/users/@me" ; 
+   Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+   GenericType<UserAtMe> localVarReturnType = new GenericType<UserAtMe>() {};
+   return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", null, null, localVarHeaderParams, null, null, null, localVarReturnType);
+ }
 }

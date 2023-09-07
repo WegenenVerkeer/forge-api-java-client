@@ -86,7 +86,7 @@ public class ManifestChildren   {
 
     IFC("ifc"),
 
-    //to solved the issue GetManifest is returning an unhandled role enum
+    //to solved the issue GetManifest is returning an un-handled role enum
     PROPERTYDB("Autodesk.CloudPlatform.PropertyDatabase"),
 
     AEC_MODELDATA("Autodesk.AEC.ModelData"),
@@ -95,9 +95,16 @@ public class ManifestChildren   {
 
     ORIGINAL_THUMBNAIL("original-thumbnail"),
 
+    LEAFLEFT("leaflet"),
+
+    PDF_STRINGS("pdf-strings"),
+
+    PDF_PAGE("pdf-page"),
+
+	LEAFLET_ZIP("leaflet-zip"),
+
     DESIGNDESCRIPTION("Autodesk.CloudPlatform.DesignDescription"),
     INDEXABLECONTENT("Autodesk.CloudPlatform.IndexableContent"),
-    LEAFLETZIP("leaflet-zip"),
     PREVIEW("preview"),
     VIEWABLE("viewable"),
     RAAS("raas"),

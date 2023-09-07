@@ -27,7 +27,9 @@ package com.autodesk.client.model;
 
 import java.util.Objects;
 
-import com.autodesk.client.model.JobPayloadItem;
+import com.autodesk.client.model.Hub;
+import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.model.JsonApiVersionJsonapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -37,42 +39,50 @@ import java.util.List;
 
 
 /**
- * Group of outputs
+ * Folders
  */
-@ApiModel(description = "Group of outputs")
 
-public class JobPayloadOutput   {
-  @JsonProperty("formats")
-  private List<JobPayloadItem> formats = new ArrayList<JobPayloadItem>();
+public class Folders   {
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
 
-  public JobPayloadOutput formats(List<JobPayloadItem> formats) {
-    this.formats = formats;
+  @JsonProperty("data")
+  private List<Folder> data = new ArrayList<Folder>();
+
+  public Folders jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
     return this;
   }
-  
 
    /**
-   * Group of requested formats/types. User can request multiple formats.
-   * @return formats
+   * Get jsonapi
+   * @return jsonapi
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Group of requested formats/types. User can request multiple formats.")
-  public List<JobPayloadItem> getFormats() {
-    return formats;
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
   }
 
-  public void setFormats(List<JobPayloadItem> formats) {
-    this.formats = formats;
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
   }
 
-  @JsonProperty("destination")
-  private JobPayloadDestination destination = new JobPayloadDestination();
-
-  public JobPayloadDestination destination() {
-    return this.destination;
+  public Folders data(List<Folder> data) {
+    this.data = data;
+    return this;
   }
-  
-  public void setDestination(JobPayloadDestination o) {
-	    this.destination = o;
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public List<Folder> getData() {
+    return data;
+  }
+
+  public void setData(List<Folder> data) {
+    this.data = data;
   }
 
 
@@ -84,21 +94,23 @@ public class JobPayloadOutput   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    JobPayloadOutput jobPayloadOutput = (JobPayloadOutput) o;
-    return Objects.equals(this.formats, jobPayloadOutput.formats);
+    Folders folders = (Folders) o;
+    return Objects.equals(this.jsonapi, folders.jsonapi) &&
+        Objects.equals(this.data, folders.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(formats);
+    return Objects.hash(jsonapi, data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JobPayloadOutput {\n");
+    sb.append("class folders {\n");
     
-    sb.append("    formats: ").append(toIndentedString(formats)).append("\n");
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
