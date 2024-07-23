@@ -159,9 +159,9 @@ public class OAuth2ThreeLegged implements Authentication {
 
         this.name = "oauth2_access_code";
         this.type = "oauth2";
-        this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/gettoken";
-        this.authorizationUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/authorize";
-        this.refreshTokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/refreshtoken";
+        this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v2/token";
+        this.authorizationUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v2/authorize";
+        this.refreshTokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v2/token";
         this.scopes.add("data:read");
         this.scopes.add("data:write");
         this.scopes.add("data:create");
@@ -241,16 +241,15 @@ public class OAuth2ThreeLegged implements Authentication {
         if (flow == OAuthFlow.accessCode) {
 
             Map<String, String> formParams = new HashMap<>();
-            formParams.put("client_id", this.clientId);
-            formParams.put("client_secret", this.clientSecret);
             formParams.put("code", code);
             formParams.put("grant_type", "authorization_code");
             formParams.put("redirect_uri", this.redirectUri);
             formParams.put("response_type", "code");
 
-
             Map<String, String> headers = new HashMap<>();
-            headers.put("content-type", "application/x-www-form-urlencoded");
+            headers.put("Content-Type", "application/x-www-form-urlencoded");
+            headers.put("Accept", "application/json");
+            headers.put("Authorization", getAuthorizationString());
 
             ThreeLeggedCredentials response = null;
             try {
@@ -293,13 +292,13 @@ public class OAuth2ThreeLegged implements Authentication {
     public ThreeLeggedCredentials refreshAccessToken(String refreshToken) {
 
         Map<String, String> formParams = new HashMap<>();
-        formParams.put("client_id", this.clientId);
-        formParams.put("client_secret", this.clientSecret);
         formParams.put("grant_type", "refresh_token");
         formParams.put("refresh_token", refreshToken);
 
         Map<String, String> headers = new HashMap<>();
-        headers.put("content-type", "application/x-www-form-urlencoded");
+        headers.put("Content-Type", "application/x-www-form-urlencoded");
+        headers.put("Accept", "application/json");
+        headers.put("Authorization", getAuthorizationString());
 
         ThreeLeggedCredentials response = null;
         try {
@@ -334,6 +333,11 @@ public class OAuth2ThreeLegged implements Authentication {
             e.printStackTrace();
         }
         return response;
+    }
+
+    private String getAuthorizationString() {
+        String encodedClientIdSecret = Base64.getEncoder().encodeToString((this.clientId + ":" + this.clientSecret).getBytes());
+        return "Basic " + encodedClientIdSecret;
     }
 
     public Boolean isAuthorized(ThreeLeggedCredentials credentials) {
