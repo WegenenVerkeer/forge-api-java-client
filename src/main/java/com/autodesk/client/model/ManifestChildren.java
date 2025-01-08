@@ -109,7 +109,8 @@ public class ManifestChildren   {
     VIEWABLE("viewable"),
     RAAS("raas"),
     PDF("pdf"),
-    LOD("lod");
+    LOD("lod"),
+    METADATA("metadata");
 
     private String value;
 
